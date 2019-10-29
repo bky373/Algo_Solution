@@ -56,5 +56,4 @@ class LinkedList<T> {
 			n = n.next;
 		}
 	}
-	
 }
