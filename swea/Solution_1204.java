@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Solution {
+public class Solution_1204 {
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		int T = sc.nextInt();
