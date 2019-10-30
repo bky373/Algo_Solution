@@ -19,13 +19,6 @@ public class Solution_1206 {
 					map[r][c] = 1;
 				}
 			}
-//			for (int r = 0; r < map.length; r++) {
-//				System.out.print("r:" + r + "|");
-//				for (int c = 0; c < map[0].length; c++) {
-//					System.out.print(map[r][c]);
-//				}
-//				System.out.println();
-//			}
 			for (int r = 0; r < map.length; r++) {
 				for (int c = 2; c < map[0].length - 2; c++) {
 					if (map[r][c] == 1 && map[r][c - 1] != 1 && map[r][c - 2] != 1 && map[r][c + 1] != 1 && map[r][c + 2] != 1) {
@@ -37,3 +30,10 @@ public class Solution_1206 {
 		}
 	}
 }
+//for (int r = 0; r < map.length; r++) {
+//System.out.print("r:" + r + "|");
+//for (int c = 0; c < map[0].length; c++) {
+//	System.out.print(map[r][c]);
+//}
+//System.out.println();
+//}

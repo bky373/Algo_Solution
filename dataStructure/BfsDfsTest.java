@@ -1,7 +1,8 @@
 package study.dataStructure;
 
 import java.util.NoSuchElementException;
-
+import java.util.LinkedList;
+import java.util.Stack;
 
 class Queue<T> {
 	class Node<T> {
@@ -65,7 +66,7 @@ class Graph {
 			adjacent = new LinkedList<Node>();
 		}
 	}
-	
+
 	Node[] nodes;
 
 	Graph(int size) {
@@ -119,7 +120,7 @@ class Graph {
 		while (!queue.isEmpty()) {
 			Node r = queue.dequeue();
 			for (Node n : r.adjacent) {
-				if (n.marked = false) {
+				if (n.marked == false) {
 					n.marked = true;
 					queue.enqueue(n);
 				}
@@ -127,21 +128,25 @@ class Graph {
 			visit(r);
 		}
 	}
+
 	void dfsR(Node r) {
-		if(r==null)return;
-		r.marked =true;
-		visit(r); 
-		for(Node n: r.adjacent){
-			if(n.marked == false) {
+		if (r == null)
+			return;
+		r.marked = true;
+		visit(r);
+		for (Node n : r.adjacent) {
+			if (n.marked == false) {
 				dfsR(n);
 			}
-			
+
 		}
 	}
+
 	void dfsR(int index) {
 		Node r = nodes[index];
 		dfsR(r);
 	}
+
 	void dfsR() {
 		dfsR(0);
 	}
@@ -152,17 +157,16 @@ class Graph {
 }
 
 /*
--------------------------
-   0
-  /
- 1 -- 3    7
- |  / | \ /
- | /  |  5
- 2 -- 4   \
-           6 - 8
-*/
+ * ------------------------- 
+ *    0 
+ *   / 
+ *  1 -- 3    7 
+ *  |  / | \ / 
+ *  | /  |  5 
+ *  2 -- 4   \ 6 - 8
+ */
 
-public class BFSDFS_From_KE {
+public class BfsDfsTest {
 	public static void main(String[] args) {
 		Graph g = new Graph(9);
 		g.addEdge(0, 1);
@@ -175,6 +179,23 @@ public class BFSDFS_From_KE {
 		g.addEdge(5, 6);
 		g.addEdge(5, 7);
 		g.addEdge(6, 8);
-		g.dfs();
+//		g.dfs();
+//		g.bfs();
+//		g.dfsR();
+//
+//		g.dfs(3);
+//		g.bfs(3);
+		g.dfsR(3);
 	}
 }
+/*
+ * ----------------- 
+ * DFS(0) 0 1 3 5 7 6 8 4 2 
+ * BFS(0) 0 1 2 3 4 5 6 7 8 
+ * DFSR(0) - Recursive 0 1 2 4 3 5 6 8 7 
+ * ------------------ 
+ * DFS(3) 3 5 7 6 8 4 2 1 0
+ * BFS(3) 3 1 2 4 5 0 6 7 8 
+ * DFSR(3) - Recursive 3 1 0 2 4 5 6 8 7
+ * ------------------
+ */
