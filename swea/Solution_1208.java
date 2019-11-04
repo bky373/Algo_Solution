@@ -30,27 +30,9 @@ public class Solution_1208 {
 			
 			selectionSort(a, 0);
 			
-			int min = 101, max = 0, j = 0, k = 0;
-			for (int c = 0; c < dumpCnt; c++) {
-				for (int i = 0; i < boxLine; i++) {
-					if (max <= a[i]) {
-						j = i;
-						max = a[j];
-					}
-					if (min >= a[i]) {
-						k = i;
-						min = a[k];
-					}
-				}
-				if (a[k] < 100) {
-					a[k]++;
-					max = a[j];
-				}
-				if (a[j] > a[k]) {
-					a[j]--;
-					min = a[k];
-				}
-			}
+			int max, min;
+			if(
+			
 			for (int i = 0; i < boxLine; i++) {
 				if (max <= a[i]) {
 					j = i;
