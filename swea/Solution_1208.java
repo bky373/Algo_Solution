@@ -31,19 +31,18 @@ public class Solution_1208 {
 			selectionSort(a, 0);
 			
 			int max, min;
-			if(
 			
-			for (int i = 0; i < boxLine; i++) {
-				if (max <= a[i]) {
-					j = i;
-					max = a[j];
-				}
-				if (min >= a[i]) {
-					k = i;
-					min = a[k];
-				}
-			}
-			System.out.printf("#%d %d\n", tc, max - min);
+//			for (int i = 0; i < boxLine; i++) {
+//				if (max <= a[i]) {
+//					j = i;
+//					max = a[j];
+//				}
+//				if (min >= a[i]) {
+//					k = i;
+//					min = a[k];
+//				}
+//			}
+//			System.out.printf("#%d %d\n", tc, max - min);
 		}
 	}
 }
