@@ -1,3 +1,4 @@
+
 package study.dataStructure;
 
 import java.util.LinkedList;
@@ -84,5 +85,4 @@ public class HashTable_Test {
 		System.out.println(h.get("min"));
 		System.out.println(h.get("jae"));
 	}
-
 }
