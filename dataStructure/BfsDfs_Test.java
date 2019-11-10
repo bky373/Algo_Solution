@@ -166,7 +166,7 @@ class Graph {
  *  2 -- 4   \ 6 - 8
  */
 
-public class BfsDfsTest {
+public class BfsDfs_Test {
 	public static void main(String[] args) {
 		Graph g = new Graph(9);
 		g.addEdge(0, 1);
