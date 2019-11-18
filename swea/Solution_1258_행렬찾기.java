@@ -4,8 +4,7 @@ import java.util.*;
 
 public class Solution_1258_행렬찾기 {
 	static int T, n, k, cnt_subMatrix;
-	static int[][] map, arrRC;
-	static int[] rowArr, colArr;
+	static int[][] map, arr_subRC;
 	static int[] dx = { 0, 1 }; // 동 남
 	static int[] dy = { 1, 0 };
 	static HashMap<Integer, Integer> hm;
@@ -13,43 +12,44 @@ public class Solution_1258_행렬찾기 {
 
 	public static void main(String[] args) {
 		T = sc.nextInt();
-		n = sc.nextInt();
 
-		// map
-		map = new int[n][n];
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				map[i][j] = sc.nextInt();
-			}
-		}
-		arrRC = new int[20][3];
-		rowArr = new int[20];
-		colArr = new int[20];
-		cnt_subMatrix = 0;
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				if (map[i][j] != 0) {
-					cntSubRCs(map, i, j); // 각 부분행렬의 행,열 개수 세기
-					Search(new Dot(i, j)); // 창고 조사
-					cnt_subMatrix++; // 부분행렬 수
-				}
-				// 제약사항 점검
-				if (isException(cnt_subMatrix)) {
-					System.out.println(-1);
-					return;
+		for (int tc = 0; tc < T; tc++) {
+			n = sc.nextInt();
+
+			map = new int[n][n];
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j < n; j++) {
+					map[i][j] = sc.nextInt();
 				}
 			}
+			
+			arr_subRC = new int[20][3];
+			cnt_subMatrix = 0;
+			k = 0;
+			
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j < n; j++) {
+					if (map[i][j] != 0) {
+						cnt_subMatrix++; // 부분행렬 개수
+						cntSubRCs(map, i, j); // 각 부분행렬의 행,열 개수 세기
+						Search(new Dot(i, j)); // 화학물질 조사
+					}
+					// 제약사항 점검
+//					if (isException(cnt_subMatrix)) {
+//						System.out.println(cnt_subMatrix);
+//						System.out.println(-1);
+//						return;
+//					}
+				}
+			}
+			sortArrRC(arr_subRC); // subRC 배열 정렬하기
+			
+			String str = new String();
+			for (int[] tmp : arr_subRC)
+				if (tmp[0] != 0)
+					str += tmp[0] + " " + tmp[1] +" ";
+			System.out.printf("#%d %d %s\n", tc + 1, cnt_subMatrix, str);
 		}
-		sortRC(arrRC);
-		for (int[] i : arrRC) {
-			if (i[0] != 0)
-				System.out.print(i[0] + " " + i[1] + " ");
-		}
-//		System.out.println(Arrays.toString(arrRC[0]));
-//		System.out.println(Arrays.toString(arrRC[1]));
-//		System.out.println(Arrays.toString(arrRC[2]));
-//		System.out.println(Arrays.toString(list));
-		System.out.println(cnt_subMatrix);
 	}
 
 	private static boolean isException(int cnt_subMatrix) {
@@ -67,24 +67,22 @@ public class Solution_1258_행렬찾기 {
 		int x = i, y = j;
 		if (k < 20) {
 			while (x < n && map[x][y] != 0) {
-				arrRC[k][0] += 1;
-				rowArr[k] += 1;
+				arr_subRC[k][0] += 1;
 				x += 1;
 			}
 			x = i;
 			while (y < n && map[x][y] != 0) {
-				arrRC[k][1] += 1;
-				colArr[k] += 1;
+				arr_subRC[k][1] += 1;
 				y += 1;
 			}
 			k++;
 			for (int n = 0; n < k; n++)
-				arrRC[n][2] = arrRC[n][0] * arrRC[n][1];
+				arr_subRC[n][2] = arr_subRC[n][0] * arr_subRC[n][1];
 		}
 	}
 
-	private static void sortRC(int[][] arrRC) {
-		Arrays.sort(arrRC, new Comparator<int[]>() {
+	private static void sortArrRC(int[][] arr_subRC) {
+		Arrays.sort(arr_subRC, new Comparator<int[]>() {
 			public int compare(int[] entry1, int[] entry2) {
 				int v1 = entry1[2];
 				int v2 = entry2[2];
@@ -120,7 +118,6 @@ public class Solution_1258_행렬찾기 {
 				}
 			}
 		}
-
 //		printMap();
 	}
 
@@ -132,7 +129,6 @@ public class Solution_1258_행렬찾기 {
 			System.out.println();
 		}
 	}
-
 }
 
 class Dot {
