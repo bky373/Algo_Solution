@@ -2,7 +2,7 @@ package study.swea;
 
 import java.util.Scanner;
 
-public class Solution_1222 {
+public class Solution_1222_°è»ê±â1 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int length = 0;
