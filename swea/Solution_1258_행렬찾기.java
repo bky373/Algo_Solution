@@ -22,7 +22,8 @@ public class Solution_1258_행렬찾기 {
 			}
 		}
 		
-		r = c = new int[20];
+		r = new int[20];
+		c = new int[20];
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
 				if (map[i][j] != 0) {
@@ -38,9 +39,9 @@ public class Solution_1258_행렬찾기 {
 			}
 		}
 		Object[] list = sortRC(r, c);
-		System.out.println(Arrays.toString(list));
 		System.out.println(Arrays.toString(r));
 		System.out.println(Arrays.toString(c));
+		System.out.println(Arrays.toString(list));
 		System.out.println(cnt_subMatrix);
 		cnt_subMatrix = 0;
 	}
@@ -57,7 +58,7 @@ public class Solution_1258_행렬찾기 {
 
 	private static void cntSubRCs(int[][] map, int i, int j) {
 		int x = i, y = j;
-		if (k <= 20) {
+		if (k < 20) {
 			while (x < n && map[x][y] != 0) {
 				r[k] += 1;
 				x += 1;
