@@ -2,7 +2,7 @@ package study.swea;
 
 import java.util.Scanner;
 
-public class Solution_1223_계산기2 {
+public class Solution_1222_계산기1 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
