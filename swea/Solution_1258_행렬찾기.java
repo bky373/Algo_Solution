@@ -56,10 +56,8 @@ public class Solution_1258_행렬찾기 {
 	private static boolean isException(int cnt_subMatrix) {
 		if (80 < n && n <= 100)
 			return (15 < cnt_subMatrix && cnt_subMatrix <= 20) ? false : true;
-		else if (n > 60)
-			return (10 < cnt_subMatrix && cnt_subMatrix <= 15) ? false : true;
 		else if (n > 40)
-			return (5 < cnt_subMatrix && cnt_subMatrix <= 10) ? false : true;
+			return (5 < cnt_subMatrix && cnt_subMatrix <= 15) ? false : true;
 		else if (n > 10)
 			return (5 < cnt_subMatrix && cnt_subMatrix <= 10) ? false : true;
 		else
@@ -89,7 +87,7 @@ public class Solution_1258_행렬찾기 {
 			public int compare(int[] entry1, int[] entry2) {
 				int v1 = entry1[2];
 				int v2 = entry2[2];
-				return v1 != v2 ? Integer.compare(v1, v2) : entry1[0] - entry2[1];
+				return v1 != v2 ? Integer.compare(v1, v2) : entry2[1] - entry1[1];
 			}
 		});
 	}
