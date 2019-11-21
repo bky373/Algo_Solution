@@ -4,16 +4,17 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class Solution_1223_°è»ê±â2_2 {
-
+	static int T = 10;
+	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		for(int i=1; i<11; i++) {
+		for(int tc=1; tc<=T; tc++) {
 			int size = sc.nextInt();
 			String infix = sc.next();
 			
 			String postfix = toPostfix(infix);
-			System.out.printf("#%d %d\n", i, (int)calc(postfix));
+			System.out.printf("#%d %d\n", tc, (int)calc(postfix));
 		}
 	}
 	
