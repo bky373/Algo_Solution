@@ -59,11 +59,11 @@ public class Solution_1227_¹Ì·Î2 {
 	}
 }
 
-class Point {
+class Point2 {
 	int x;
 	int y;
 
-	Point(int x, int y) {
+	Point2(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
