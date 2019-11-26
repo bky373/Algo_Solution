@@ -21,7 +21,7 @@ public class Solution_1224_계산기3 {
 	private static String toPostfix(String infix) {
 		StringBuilder postfix = new StringBuilder();
 		char[] charArr = infix.toCharArray();
-		Stack<Character> ops = new Stack<Character>();
+		Stack<Character> opers = new Stack<Character>();
 		
 		for (int i = 0; i < charArr.length; i++) {
 			char ch = charArr[i];
@@ -30,21 +30,21 @@ public class Solution_1224_계산기3 {
 			
 			else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
 				int newRank = toRank(ch);
-				while (!ops.isEmpty()) {
-					int oldRank = toRank(ops.peek());
-					if ( newRank > oldRank)
+				while (!opers.isEmpty()) {
+					int oldRank = toRank(opers.peek());
+					if ( newRank > oldRank )
 						break;
-					postfix.append(ops.pop());
+					postfix.append(opers.pop());
 				}
-				ops.push(ch);
+				opers.push(ch);
 			}
 			
 			else if (ch == '(')
-                ops.push(ch);
+                opers.push(ch);
             
             else if ( ch == ')'){
-            	while(ops.size()>0){
-                    char x = ops.pop();
+            	while(opers.size()>0){
+                    char x = opers.pop();
                     if(x == '(')
                         break;
                 	postfix.append(x);
@@ -52,8 +52,8 @@ public class Solution_1224_계산기3 {
             }
 		}
 
-		while (!ops.isEmpty()) {
-			postfix.append(ops.pop());
+		while (!opers.isEmpty()) {
+			postfix.append(opers.pop());
 
 		}
 //		System.out.println(postfix);
