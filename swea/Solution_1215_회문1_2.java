@@ -1,6 +1,6 @@
 package study.swea;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Solution_1215_회문1_2 {
 	public static void main(String[] args) {
@@ -21,7 +21,7 @@ public class Solution_1215_회문1_2 {
 				boolean flag;
 				for (int i = 0; i < 8; i++) {
 					flag = true;
-					for(int j=0;j<len/2;j++) { // 길이의 절반만큼만 확인
+					for(int j=0;j<len/2;j++) { // 길이의 절반 -1만큼만 확인
 						if(arrChar[i][s+j] != arrChar[i][s+len-1-j]) {
 							flag = false;
 							break;
@@ -29,7 +29,7 @@ public class Solution_1215_회문1_2 {
 					}
 					if(flag) cnt++;
 					flag = true;
-					for(int j=0;j<len/2;j++) {
+					for(int j=0;j<len/2;j++) { // 길이의 절반 -1만큼만 확인
 						if(arrChar[s+j][i] != arrChar[s+len-1-j][i]) {
 							flag = false;
 							break;

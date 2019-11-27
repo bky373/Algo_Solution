@@ -25,19 +25,19 @@ public class Solution_1227_미로2 {
 				}
 			}
 
-			int ans = search(new Location1(1, 1));
+			int ans = search(new Location2(1, 1));
 			System.out.printf("#%d %d\n", n, ans);
 		}
 	}
 
-	private static int search(Location1 startPoint) {
-		Queue<Location1> q = new LinkedList<Location1>();
+	private static int search(Location2 startPoint) {
+		Queue<Location2> q = new LinkedList<Location2>();
 
 		q.offer(startPoint);
 		map[startPoint.x][startPoint.y] = 1;
 
 		while (!q.isEmpty()) {
-			Location1 p = q.poll();
+			Location2 p = q.poll();
 
 			for (int i = 0; i < 4; i++) {
 
@@ -50,7 +50,7 @@ public class Solution_1227_미로2 {
 					return 1;
 				}
 				if (map[nx][ny] == 0) {
-					q.offer(new Location1(nx, ny));
+					q.offer(new Location2(nx, ny));
 					map[nx][ny] = 1;
 				}
 			}

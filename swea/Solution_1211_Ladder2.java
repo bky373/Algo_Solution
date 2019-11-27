@@ -1,5 +1,6 @@
 package study.swea;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -8,6 +9,7 @@ public class Solution_1211_Ladder2 {
 	static int n;
 	static int SIZE = 100;
 	static int[][] map;
+	static int[] arrCnt;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -22,50 +24,57 @@ public class Solution_1211_Ladder2 {
 				}
 			}
 
-			int endY = 0;
+			arrCnt = new int[100];
+			int min = Integer.MAX_VALUE, j = 0;
+			
 			for (int i = 0; i < SIZE; i++) {
-				if (map[SIZE - 1][i] == 2) {
-					endY = i;
-					break;
+				if (map[0][i] == 1) {
+					arrCnt[i] = Search(new Location2(0, i));
+					if (arrCnt[i] <= min) {
+						min = arrCnt[i];
+						j = i;
+					}
 				}
 			}
 			
-			int ans = Search(new Location(SIZE - 1, endY));
-			
-			System.out.printf("#%d %d\n", n, ans);
+			System.out.printf("#%d %d\n", n, j);
 		}
 	}
 
-	private static int Search(Location last) {
-		int nx = last.x;
-		int ny = last.y;
+	private static int Search(Location2 start) {
+		int nx = start.x;
+		int ny = start.y;
+		int cnt = 0;
 
-		while (nx != 0) {
-			nx = nx - 1; // 한 칸씩 위로 이동
-			
+		while (nx != SIZE - 1) {
+			nx = nx + 1;
+			cnt++;
+
 			// 왼쪽으로 길이 나 있을 때 왼쪽 끝까지 이동
 			if (ny - 1 >= 0 && map[nx][ny - 1] == 1) {
 				while (ny - 1 >= 0 && map[nx][ny - 1] != 0) {
 					ny = ny - 1;
+					cnt++;
 				}
-			} 
-			
+			}
+
 			// 오른쪽으로 길이 나 있을 때 오른쪽 끝까지 이동
 			else if (ny + 1 <= SIZE - 1 && map[nx][ny + 1] == 1) {
 				while (ny + 1 <= SIZE - 1 && map[nx][ny + 1] != 0) {
 					ny = ny + 1;
+					cnt++;
 				}
 			}
 		}
-		return ny;
+		return cnt;
 	}
 }
 
-class Location {
+class Location2 {
 	int x;
 	int y;
 
-	Location(int x, int y) {
+	Location2(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
