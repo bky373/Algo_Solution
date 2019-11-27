@@ -1,7 +1,7 @@
 package study.swea;
 
 import java.util.*;
-public class Solution_1215 {
+public class Solution_1215_È¸¹®1 {
 	static Scanner sc  = new Scanner(System.in);
 	
 	public static void main(String[] args) {
@@ -11,6 +11,7 @@ public class Solution_1215 {
 			for(int i=0; i<8; i++) {
 				a[i] = sc.next().toCharArray();
 			}
+			
 			int count = 0;
 			for(int s=0; s<8-len+1; s++) {
 				boolean flag;
