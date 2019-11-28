@@ -28,8 +28,8 @@ public class Solution_1216_회문2 {
 				boolean flag;
 				for (int i = 0; i < 100; i++) {
 					flag = true;
-					for (int j = 0; j < len / 2; j++) {
-						if (arrChar[i][s + j] != arrChar[i][s + len - 1 - j]) {
+					for (int j = 0; j < len / 2; j++) { // 길이의 절반 -1만큼만 확인
+						if (arrChar[i][s + j] != arrChar[i][s + len - 1 - j]) { 
 							flag = false;
 							continue;
 						}
@@ -39,7 +39,7 @@ public class Solution_1216_회문2 {
 					}
 					
 					flag = true;
-					for (int j = 0; j < len / 2; j++) {
+					for (int j = 0; j < len / 2; j++) { // 길이의 절반 -1만큼만 확인
 						if (arrChar[s + j][i] != arrChar[s + len - 1 - j][i]) {
 							flag = false;
 						}
