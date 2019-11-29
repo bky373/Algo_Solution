@@ -13,7 +13,7 @@ public class Solution_1229_¾ÏÈ£¹®2 {
 
 		for (int tc = 1; tc < 11; tc++) {
 			message = new ArrayList<Integer>();
-
+			
 			n = sc.nextInt();
 			for (int i = 0; i < n; i++)
 				message.add(sc.nextInt());
